@@ -38,9 +38,6 @@ N = int('0b' + sys.argv[2], 2)
 i = int(sys.argv[3])
 j = int(sys.argv[4])
 
-print("num: ", bin(M))
-print("shift: ", get_bit(M, 10))
-
 new_M = M
 for k in range(i, j+1):
     bit = get_bit(N, k-i)
