@@ -54,14 +54,6 @@ print("new M: " + bin(new_M))
 example usage (using the command line):
 ./5.1_insertion.py 10000000000 1001101 2 8
 num:  0b10000000000
-shift:  1
-k-i:  0 bit:  1
-k-i:  1 bit:  0
-k-i:  2 bit:  1
-k-i:  3 bit:  1
-k-i:  4 bit:  0
-k-i:  5 bit:  0
-k-i:  6 bit:  1
 orig M: 0b10000000000
 N: 0b1001101
 i:  2 j:  8
