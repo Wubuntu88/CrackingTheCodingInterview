@@ -26,6 +26,22 @@ def update_bit(num, index, value):
     mask = ~(1 << index)
     return (num & mask) | (value << index)
 
+def my_solution(N, M, i, j):
+    new_N = N
+    for k in range(i, j+1):
+        bit = get_bit(M, k-i)
+        new_N = update_bit(new_N, k, bit)
+    return new_N
+
+def book_solution(N, M, i, j):
+    ones = ~0
+    left = ones << j + 1
+    right = (1 << i) - 1
+    mask = left | right
+    N = N & mask
+    M = (M << i)
+    return N | M
+
 """
 --Start of program--
 argv[1]: the bit sequence into which I will insert N
@@ -33,24 +49,21 @@ argv[2]: the bit sequence to insert into M
 argv[3]: the starting index where N will be inserted into M
 argv[4]: the ending index (inclusive) where N will be inserted into M
 """
-M = int('0b' + sys.argv[1], 2)
-N = int('0b' + sys.argv[2], 2)
+N = int('0b' + sys.argv[1], 2)
+M = int('0b' + sys.argv[2], 2)
 i = int(sys.argv[3])
 j = int(sys.argv[4])
 
-new_M = M
-for k in range(i, j+1):
-    bit = get_bit(N, k-i)
-    new_M = update_bit(new_M, k, bit)
-print("orig M: " + bin(M))
-print("N: " + bin(N))
+new_N = my_solution(N, M, i, j)
+#new_N = book_solution(N, M, i, j)
+print("orig N: " + bin(N))
+print("M: " + bin(M))
 print("i: ", i, "j: ", j)
-print("new M: " + bin(new_M))
+print("new N: " + bin(new_N))
 
 """
 example usage (using the command line):
 ./5.1_insertion.py 10000000000 1001101 2 8
-num:  0b10000000000
 orig M: 0b10000000000
 N: 0b1001101
 i:  2 j:  8
